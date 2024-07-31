@@ -7,6 +7,6 @@ const assetRouter = Router();
 
 assetRouter.post("/asset", verifyToken, assetController.addAsset);
 
-assetRouter.get("/assets", assetController.getAssets);
+assetRouter.get("/assets", verifyToken, assetController.getAssets);
 
 export default assetRouter;

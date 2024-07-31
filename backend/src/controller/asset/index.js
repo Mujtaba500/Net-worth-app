@@ -18,7 +18,24 @@ const assetController = {
       message: "assset added",
     });
   },
-  getAssets: (req, res) => {},
+  getAssets: async (req, res) => {
+    try {
+      const user = req.user;
+      const assets = await assetModel.findAll({
+        where: {
+          UserId: user.id,
+        },
+      });
+      res.json({
+        data: assets,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        message: "Internal server error",
+      });
+    }
+  },
 };
 
 export default assetController;

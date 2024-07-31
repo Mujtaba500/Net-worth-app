@@ -1,8 +1,7 @@
-import axiosInstance from "../axios/axios.jsx";
 import { useState } from "react";
-import Liabilities from "./Liabilities.jsx";
+import axiosInstance from "../axios/axios.jsx";
 
-const Assets = () => {
+const Liabilities = () => {
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
 
@@ -20,7 +19,7 @@ const Assets = () => {
       name,
       value,
     };
-    const response = await axiosInstance.post("/asset", data, {
+    const response = await axiosInstance.post("/liability", data, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -30,7 +29,7 @@ const Assets = () => {
 
   return (
     <>
-      <h1>Assets</h1>
+      <h1>Liabilites</h1>
 
       <input
         type="text"
@@ -49,9 +48,7 @@ const Assets = () => {
       <button className="btn" onClick={handleBtnClick}>
         Add
       </button>
-      <Liabilities />
     </>
   );
 };
-
-export default Assets;
+export default Liabilities;
